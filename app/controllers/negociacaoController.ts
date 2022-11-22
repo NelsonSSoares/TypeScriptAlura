@@ -16,15 +16,23 @@ export class NegociacaoController{
 
        const negociacao = this.criaNegociacao();
         console.log(negociacao);
+        this.limparForm();
     }
 
     public criaNegociacao(): Negociacao{
-        
+
         const regexp = /-/g;
         const date = new Date(this.inputData.value.replace(regexp, ','));
         const quantidade = parseInt(this.inputQuantidade.value);
         const valor = parseFloat(this.inputValor.value);
        
         return new Negociacao(date, quantidade, valor);
+    }
+
+    public limparForm(): void{
+        this.inputData.value = '';
+        this.inputQuantidade.value = '';
+        this.inputValor.value = '';
+        this.inputData.focus();
     }
 }
