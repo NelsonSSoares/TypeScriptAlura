@@ -1,3 +1,4 @@
+import { Negociacoes } from "../models/negociacoes.js";
 
 
 export class NegociacoesView{
@@ -9,7 +10,7 @@ export class NegociacoesView{
        
     }
 
-    public template(): string{
+    public template(model: Negociacoes): string{
         //classes do bootstrap
         return `
             <table class="table table-hover table-bordered">
@@ -20,7 +21,17 @@ export class NegociacoesView{
                         <th>VALOR</th>
                     </tr>
                 </thead>
-                
+                    ${
+                       model.lista().map(negociacao =>{
+                        return `
+                            <tr>
+                                <td>?</td>
+                                <td>${negociacao.quantidade}</td>
+                                <td>${negociacao.valor}</td>
+                            </tr>
+                        `
+                       }).join('')
+                    }
                 <tbody>
                 
                 </tbody>
@@ -29,9 +40,13 @@ export class NegociacoesView{
 
     }
 
-    public update(): void{
-        this.elemento.innerHTML = this.template();
+    public update(model: Negociacoes): void{
+        const template = this.template(model);
+        console.log(template);
+        
+        this.elemento.innerHTML = this.template(model);
         
     }
+
 
 }
