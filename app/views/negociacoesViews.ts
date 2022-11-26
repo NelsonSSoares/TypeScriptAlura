@@ -5,7 +5,7 @@ import { View } from "./view.js";
 export class NegociacoesView extends View<Negociacoes>{
     
 
-    public template(model: Negociacoes): string{
+    protected template(model: Negociacoes): string{
         //classes do bootstrap
         return `
             <table class="table table-hover table-bordered">
