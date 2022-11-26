@@ -3,8 +3,7 @@ import { Negociacoes } from "../models/negociacoes.js";
 import { MessageView } from "../views/messageView.js";
 import { NegociacoesView } from "../views/negociacoesViews.js";
 
-
-export class NegociacaoController{
+export class NegociacaoController {
 
     private inputData: HTMLInputElement;
     private inputQuantidade: HTMLInputElement;
