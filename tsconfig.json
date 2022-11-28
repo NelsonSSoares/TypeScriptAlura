@@ -1,10 +1,11 @@
 {
     "compilerOptions": {
-        "outDir": "dist/js",
-        "target": "ES6",
-        "noEmitOnError": true,
-        "noImplicitAny": true
-
+        "outDir": "dist/js", //pasta aonde sera adicionados os arquivos convertidos
+        "target": "ES6", // Compila para ECMAScript 6
+        "noEmitOnError": true, //não compila se houver erros
+        "noImplicitAny": true, // não atribui o type any automaticamente
+        "removeComments": true, //remove comentarios na conversão para JS
+        "strictNullChecks": true, // não permite valores nulos implicitamente, somente se for atribuido intencionalmente  
     },
-    "include": ["app/**/*"]
+    "include": ["app/**/*"] //caminho de pasta que ira para a produção
 }

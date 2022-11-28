@@ -2,9 +2,18 @@ export abstract class View<T>{
     
     protected element: HTMLElement;
     private escapar: boolean = false;
+
+
 // ? INDICA PARAMETRO OPCIONAL
     constructor(selector: string, escapar?: boolean){
-        this.element = document.querySelector(selector);
+        const element = document.querySelector(selector);
+        
+        if(element){
+            this.element = element as HTMLElement;
+        }else{
+            throw Error(`Seletor ${selector} não existe no DOM`);
+        }
+
         if(escapar){
             this.escapar = escapar;
         }

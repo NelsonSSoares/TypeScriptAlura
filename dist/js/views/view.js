@@ -1,15 +1,19 @@
 export class View {
-    // ? INDICA PARAMETRO OPCIONAL
     constructor(selector, escapar) {
         this.escapar = false;
-        this.element = document.querySelector(selector);
+        const element = document.querySelector(selector);
+        if (element) {
+            this.element = element;
+        }
+        else {
+            throw Error(`Seletor ${selector} não existe no DOM`);
+        }
         if (escapar) {
             this.escapar = escapar;
         }
     }
     update(model) {
         let template = this.template(model);
-        //remove scripts maliciosos do metodo template
         if (this.escapar) {
             template = template.replace(/<script>[\s\S]*?<\/script>/, '');
         }
