@@ -1,13 +1,21 @@
 export abstract class View<T>{
     
     protected element: HTMLElement;
-
-    constructor(selector: string){
+    private escapar: boolean = false;
+// ? INDICA PARAMETRO OPCIONAL
+    constructor(selector: string, escapar?: boolean){
         this.element = document.querySelector(selector);
+        if(escapar){
+            this.escapar = escapar;
+        }
     }
 
     public update(model: T): void{
-        const  template = this.template(model);
+        let  template = this.template(model);
+        //remove scripts maliciosos do metodo template
+        if(this.escapar){
+            template = template.replace(/<script>[\s\S]*?<\/script>/,'');
+        }
         this.element.innerHTML = template;
     }
     

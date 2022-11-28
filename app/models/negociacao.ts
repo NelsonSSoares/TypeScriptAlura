@@ -45,5 +45,14 @@ export class Negociacao{
         return this._quantidade * this._valor;
     }
 
+    public static criaDe(dataString: string, quantidadeString: string, valorString: string): Negociacao{
+        const regexp = /-/g;
+        const date = new Date(dataString.replace(regexp, ','));
+        const quantidade = parseInt(quantidadeString);
+        const valor = parseFloat(valorString);
+       
+        return new Negociacao(date, quantidade, valor);
+    }
+
     
 }
