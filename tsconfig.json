@@ -6,6 +6,7 @@
         "noImplicitAny": true, // não atribui o type any automaticamente
         "removeComments": true, //remove comentarios na conversão para JS
         "strictNullChecks": true, // não permite valores nulos implicitamente, somente se for atribuido intencionalmente  
+        "experimentalDecorators": true, // permite o uso de decorators 
     },
     "include": ["app/**/*"] //caminho de pasta que ira para a produção
 }
