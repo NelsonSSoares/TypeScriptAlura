@@ -1,3 +1,4 @@
+import { inspect } from "../decorators/inspect.js";
 import { logarTempoDeExecucao } from "../decorators/logarTempoDeExecucao.js";
 
 export abstract class View<T>{
@@ -20,7 +21,9 @@ export abstract class View<T>{
             this.escapar = escapar;
         }
     }
-    @logarTempoDeExecucao()
+
+    @inspect()
+    @logarTempoDeExecucao(true)
     public update(model: T): void{       
         
         let  template = this.template(model);
