@@ -4,11 +4,11 @@ import { logarTempoDeExecucao } from "../decorators/logarTempoDeExecucao.js";
 export abstract class View<T>{
     
     protected element: HTMLElement;
-    private escapar: boolean = false;
+
 
 
 // ? INDICA PARAMETRO OPCIONAL
-    constructor(selector: string, escapar?: boolean){
+    constructor(selector: string){
         const element = document.querySelector(selector);
         
         if(element){
@@ -17,9 +17,6 @@ export abstract class View<T>{
             throw Error(`Seletor ${selector} não existe no DOM`);
         }
 
-        if(escapar){
-            this.escapar = escapar;
-        }
     }
 
     @logarTempoDeExecucao(true)
@@ -28,9 +25,6 @@ export abstract class View<T>{
         
         let  template = this.template(model);
         //remove scripts maliciosos do metodo template
-        if(this.escapar){
-            template = template.replace(/<script>[\s\S]*?<\/script>/,'');
-        }
         this.element.innerHTML = template;
         
     }

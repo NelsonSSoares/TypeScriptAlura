@@ -11,7 +11,7 @@ export class NegociacaoController {
     private inputQuantidade: HTMLInputElement;
     private inputValor: HTMLInputElement;
     private negociacoes = new Negociacoes();
-    private negociacoesView = new NegociacoesView('#negociacoesView', true);
+    private negociacoesView = new NegociacoesView('#negociacoesView');
     private messageView = new MessageView('#messageView');
 
     constructor(){
@@ -21,7 +21,7 @@ export class NegociacaoController {
         this.inputValor = document.querySelector("#valor") as HTMLInputElement;
         this.negociacoesView.update(this.negociacoes);
     }
-    
+
     
     @logarTempoDeExecucao(true)
     public adiciona(): void{
