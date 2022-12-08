@@ -22,6 +22,7 @@ export class NegociacaoController {
         this.negociacoesView.update(this.negociacoes);
     }
     
+    
     @logarTempoDeExecucao(true)
     public adiciona(): void{
 
