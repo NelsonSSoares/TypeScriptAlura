@@ -1,3 +1,4 @@
+import { domInjector } from "../decorators/domInjector.js";
 import { inspect } from "../decorators/inspect.js";
 import { logarTempoDeExecucao } from "../decorators/logarTempoDeExecucao.js";
 import { DiasDaSemana } from "../enums/DiasDaSemana.js";
@@ -7,9 +8,11 @@ import { MessageView } from "../views/messageView.js";
 import { NegociacoesView } from "../views/negociacoesViews.js";
 
 export class NegociacaoController {
-
+    @domInjector('#data')
     private inputData: HTMLInputElement;
+    @domInjector("#quantidade")
     private inputQuantidade: HTMLInputElement;
+    @domInjector("#valor")
     private inputValor: HTMLInputElement;
     private negociacoes = new Negociacoes();
     private negociacoesView = new NegociacoesView('#negociacoesView');
@@ -17,9 +20,9 @@ export class NegociacaoController {
 
     constructor(){
         // as HTMLInputElement força o typo, querySelector retorna HTMLInputElement ou null neste caso faz o casting explicito e troca o null por as HTMLInputElement
-        this.inputData = <HTMLInputElement> document.querySelector('#data');
-        this.inputQuantidade = document.querySelector('#quantidade') as HTMLInputElement;
-        this.inputValor = document.querySelector("#valor") as HTMLInputElement;
+        //this.inputData = <HTMLInputElement> document.querySelector('#data');
+        //this.inputQuantidade = document.querySelector('#quantidade') as HTMLInputElement;
+        //this.inputValor = document.querySelector("#valor") as HTMLInputElement;
         this.negociacoesView.update(this.negociacoes);
     }
 
