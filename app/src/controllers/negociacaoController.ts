@@ -4,6 +4,7 @@ import { logarTempoDeExecucao } from "../decorators/logarTempoDeExecucao.js";
 import { DiasDaSemana } from "../enums/DiasDaSemana.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
+import { NegociacoesServices } from "../services/negociacoesServices.js";
 import { MessageView } from "../views/messageView.js";
 import { NegociacoesView } from "../views/negociacoesViews.js";
 
@@ -17,6 +18,8 @@ export class NegociacaoController {
     private negociacoes = new Negociacoes();
     private negociacoesView = new NegociacoesView('#negociacoesView');
     private messageView = new MessageView('#messageView');
+    private negociacaoService = new NegociacoesServices();
+
 
     constructor(){
         // as HTMLInputElement força o typo, querySelector retorna HTMLInputElement ou null neste caso faz o casting explicito e troca o null por as HTMLInputElement
@@ -45,6 +48,20 @@ export class NegociacaoController {
        this.negociacoes.adiciona(negociacao);
        this.limparForm();
        this.atualizaView();
+        
+    }
+
+
+    public importaDados(): void{
+        
+        this.negociacaoService.obterNegociacoes()
+    
+        .then(negociacoesDeHoje => {
+            for(let negociacao of negociacoesDeHoje){
+                this.negociacoes.adiciona(negociacao);
+            }
+            this.negociacoesView.update(this.negociacoes);
+        });
         
     }
 

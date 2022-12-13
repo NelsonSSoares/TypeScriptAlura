@@ -5,7 +5,7 @@ import { View } from "./view.js";
 
 export class NegociacoesView extends View<Negociacoes>{
     
-    @escape
+    //@escape - bugando por algum motivo ainda desconhecido
     protected template(model: Negociacoes): string{
         //classes do bootstrap
         return `

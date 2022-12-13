@@ -1,5 +1,5 @@
 export function escape(
-    targe: any,
+    target: any,
     propertyKey: string,
     descriptor: PropertyDescriptor
 ){
