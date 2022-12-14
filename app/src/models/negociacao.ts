@@ -1,6 +1,8 @@
-import { Imprimivel } from "../utils/imprimivel.js";
 
-export class Negociacao implements Imprimivel{
+import { Modelo } from "../interfaces/modelo.js";
+
+
+export class Negociacao implements Modelo<Negociacao>{
 /*
     private _data: Date;
     private _quantidade: number;
@@ -65,6 +67,12 @@ export class Negociacao implements Imprimivel{
             Valor: ${this.valor}
         `;
         
+    }
+
+    public ehIgual(negociacao: Negociacao): boolean{
+        return this.data.getDate() === negociacao.data.getDate() 
+        && this.data.getMonth() === negociacao.data.getMonth()
+        && this.data.getFullYear() === negociacao.data.getFullYear();
     }
 
     
