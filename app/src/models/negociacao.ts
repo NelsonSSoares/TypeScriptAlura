@@ -1,4 +1,6 @@
-export class Negociacao{
+import { Imprimivel } from "../utils/imprimivel.js";
+
+export class Negociacao implements Imprimivel{
 /*
     private _data: Date;
     private _quantidade: number;
@@ -11,7 +13,7 @@ export class Negociacao{
         private _quantidade: number, 
         private _valor: number
         ){
-
+           
             
         /*
         this._data = data;
@@ -27,6 +29,16 @@ export class Negociacao{
             public readonly valor: number
         ){}
     */
+
+        
+    public static criaDe(dataString: string, quantidadeString: string, valorString: string): Negociacao{
+        const regexp = /-/g;
+        const date = new Date(dataString.replace(regexp, ','));
+        const quantidade = parseInt(quantidadeString);
+        const valor = parseFloat(valorString);
+       
+        return new Negociacao(date, quantidade, valor);
+    }
 
     get data(): Date{
         const data  = new Date(this._data.getTime());
@@ -45,13 +57,14 @@ export class Negociacao{
         return this._quantidade * this._valor;
     }
 
-    public static criaDe(dataString: string, quantidadeString: string, valorString: string): Negociacao{
-        const regexp = /-/g;
-        const date = new Date(dataString.replace(regexp, ','));
-        const quantidade = parseInt(quantidadeString);
-        const valor = parseFloat(valorString);
-       
-        return new Negociacao(date, quantidade, valor);
+
+    public paraTexto(): string{
+        return `
+            Data: ${this.data},
+            Quantidade: ${this.quantidade}
+            Valor: ${this.valor}
+        `;
+        
     }
 
     

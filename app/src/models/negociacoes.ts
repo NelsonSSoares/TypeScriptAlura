@@ -1,7 +1,8 @@
+import { Imprimivel } from "../utils/imprimivel.js";
 import { Negociacao } from "./negociacao.js";
 
 
-export class Negociacoes{
+export class Negociacoes extends Imprimivel{
                         //abreviacao de Array<Negociacao>
     private negociacoes: Negociacao[] = [];
 
@@ -15,7 +16,14 @@ export class Negociacoes{
         return this.negociacoes;
 
     }
+
+    
+    public paraTexto(): string {
+        return `${JSON.stringify(this.negociacoes,null,2)}`;
+        
+    }
 }
+
 
 /*
 PPP
